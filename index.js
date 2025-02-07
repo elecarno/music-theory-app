@@ -1,46 +1,46 @@
-var notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+var notes = ["C", "C♯", "D", "D♯", "E", "F", "F♯", "G", "G♯", "A", "A♯", "B"]
 var enharmonics = {
-    "Db": "C#",
-    "Eb": "D#",
-    "Gb": "F#",
-    "Ab": "G#",
-    "Bb": "A#",
+    "D♭": "C♯",
+    "E♭": "D♯",
+    "G♭": "F♯",
+    "A♭": "G♯",
+    "B♭": "A♯",
 
-    "Cb": "B",
-    "Fb": "E",
+    "C♭": "B",
+    "F♭": "E",
     
-    "E#": "F",
-    "B#": "C",
+    "E♯": "F",
+    "B♯": "C",
 
 
-    "C#": "Db",
-    "D#": "Eb",
-    "F#": "Gb",
-    "G#": "Ab",
-    "A#": "Bb",
+    "C♯": "D♭",
+    "D♯": "E♭",
+    "F♯": "G♭",
+    "G♯": "A♭",
+    "A♯": "B♭",
 
-    "B": "Cb",
-    "E": "Fb",
+    "B": "C♭",
+    "E": "F♭",
 
-    "F": "E#",
-    "C": "B#"
+    "F": "E♯",
+    "C": "B♯"
 }
 
 var ionian = {
     "C": ["C", "D", "E", "F", "G", "A", "B"],
-    "G": ["G", "A", "B", "C", "D", "E", "F#"],
-    "D": ["D", "E", "F#", "G", "A", "B", "C#"],
-    "A": ["A", "B", "C#", "D", "E", "F#", "G#"],
-    "E": ["E", "F#", "G#", "A", "B", "C#", "D#"],
-    "B": ["B", "C#", "D#", "E", "F#", "G#", "A#"],
-    "F#": ["F#", "G#", "A#", "B", "C#", "D#", "E#"],
+    "G": ["G", "A", "B", "C", "D", "E", "F♯"],
+    "D": ["D", "E", "F♯", "G", "A", "B", "C♯"],
+    "A": ["A", "B", "C♯", "D", "E", "F♯", "G♯"],
+    "E": ["E", "F♯", "G♯", "A", "B", "C♯", "D♯"],
+    "B": ["B", "C♯", "D♯", "E", "F♯", "G♯", "A♯"],
+    "F♯": ["F♯", "G♯", "A♯", "B", "C♯", "D♯", "E♯"],
 
-    "Gb": ["Gb", "Ab", "Bb", "Cb", "Db", "Eb", "F"],
-    "Db": ["Db", "Eb", "F", "Gb", "Ab", "Bb", "C"],
-    "Ab": ["Ab", "Bb", "C", "Db", "Eb", "F", "G"],
-    "Eb": ["Eb", "F", "G", "Ab", "Bb", "C", "D"],
-    "Bb": ["Bb", "C", "D", "Eb", "F", "G", "A"],
-    "F": ["F", "G", "A", "Bb", "C", "D", "E"],
+    "G♭": ["G♭", "A♭", "B♭", "C♭", "D♭", "E♭", "F"],
+    "D♭": ["D♭", "E♭", "F", "G♭", "A♭", "B♭", "C"],
+    "A♭": ["A♭", "B♭", "C", "D♭", "E♭", "F", "G"],
+    "E♭": ["E♭", "F", "G", "A♭", "B♭", "C", "D"],
+    "B♭": ["B♭", "C", "D", "E♭", "F", "G", "A"],
+    "F": ["F", "G", "A", "B♭", "C", "D", "E"],
 }
 
 var modes = {
@@ -72,11 +72,11 @@ function create_mode(root, mode) {
 function create_harm_minor(root) {
     var nat_minor = create_mode(root, 6)
 
-    var sharp_7th = nat_minor[6] + "#"
-    if (sharp_7th == "E#") {
+    var sharp_7th = nat_minor[6] + "♯"
+    if (sharp_7th == "E♯") {
         sharp_7th = "F"
     }
-    if (sharp_7th == "B#") {
+    if (sharp_7th == "B♯") {
         sharp_7th = "C"
     }
 
