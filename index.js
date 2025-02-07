@@ -61,6 +61,28 @@ const a_input4 = document.getElementById("a-input-4")
 const a_input5 = document.getElementById("a-input-5")
 const a_input6 = document.getElementById("a-input-6")
 const a_input7 = document.getElementById("a-input-7")
+const mode_switch1 = document.getElementById("mode-switch-1")
+const mode_switch2 = document.getElementById("mode-switch-2")
+const mode_switch3 = document.getElementById("mode-switch-3")
+const mode_switch4 = document.getElementById("mode-switch-4")
+const mode_switch5 = document.getElementById("mode-switch-5")
+const mode_switch6 = document.getElementById("mode-switch-6")
+const mode_switch7 = document.getElementById("mode-switch-7")
+const root_switch1 = document.getElementById("root-switch-1")
+const root_switch2 = document.getElementById("root-switch-2")
+const root_switch3 = document.getElementById("root-switch-3")
+const root_switch4 = document.getElementById("root-switch-4")
+const root_switch5 = document.getElementById("root-switch-5")
+const root_switch6 = document.getElementById("root-switch-6")
+const root_switch7 = document.getElementById("root-switch-7")
+const root_switch8 = document.getElementById("root-switch-8")
+const root_switch9 = document.getElementById("root-switch-9")
+const root_switch10 = document.getElementById("root-switch-10")
+const root_switch11 = document.getElementById("root-switch-11")
+const root_switch12 = document.getElementById("root-switch-12")
+const start_button = document.getElementById("start-button")
+
+start_button.onclick = set_question
 
 function create_mode(root, mode) {
     var root_scale = []
@@ -118,6 +140,8 @@ var answer
 document.addEventListener("DOMContentLoaded", () => {
     const inputs = document.querySelectorAll(".a-input");
 
+    inputs.forEach(input => input.value = "");
+
     inputs.forEach((input, index) => {
         input.addEventListener("input", (event) => {
             let value = event.target.value;
@@ -168,21 +192,56 @@ document.addEventListener("DOMContentLoaded", () => {
     function checkInputs() {
         let userInputs = Array.from(inputs).map(input => input.value.trim());
         if (userInputs.includes("")) {
-            alert("All inputs must be filled!");
+            // alert("All inputs must be filled!");
             return;
         }
 
         let isCorrect = userInputs.every((val, i) => val === answer[i]);
-        alert(isCorrect ? "Correct!" : "Incorrect. Answer was " + answer);
+
+        if (isCorrect) {
+            // alert("Correct! Inputs will be cleared.");
+            clearInputs();
+            set_question();
+        } else {
+            alert("Incorrect. " + answer);
+        }
+    }
+
+    function clearInputs() {
+        inputs.forEach(input => input.value = "");
+        inputs[0].focus(); // Focus back on the first input
     }
 });
 
+
 function set_question() {
-    var root = notes[Math.floor(Math.random()*notes.length)];
-    var mode = Math.floor(Math.random() * 7) + 1;
-    answer = create_mode(root, mode)
+    var allowed_modes = []
+    for (let i = 1; i <= 7; i++) {
+        const modeSwitch = document.getElementById(`mode-switch-${i}`);
+        if (modeSwitch && modeSwitch.checked) {
+            allowed_modes.push(i);
+        }
+    }
 
-    p_question.textContent = answer[0] + " " + modes[mode]
+    var allowed_roots = []
+    for (let i = 1; i <= 12; i++) {
+        const rootSwitch = document.getElementById(`root-switch-${i}`);
+        if (rootSwitch && rootSwitch.checked) {
+            allowed_roots.push(notes[i-1]);
+        }
+    }
+
+    if (allowed_modes.length == 0) {
+        p_question.textContent = "No modes selected"
+        return
+    } else if (allowed_roots.length == 0) {
+        p_question.textContent = "No roots selected"
+    } else {
+        var root = allowed_roots[Math.floor(Math.random()*allowed_roots.length)];
+        // var mode = Math.floor(Math.random() * 7) + 1;
+        var mode = allowed_modes[Math.floor(Math.random()*allowed_modes.length)];
+        answer = create_mode(root, mode)
+    
+        p_question.textContent = answer[0] + " " + modes[mode]
+    }
 }
-
-set_question()
