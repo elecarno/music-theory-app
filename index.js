@@ -53,6 +53,14 @@ var modes = {
     7: "Locrian"
 }
 
+const a_input1 = document.getElementById("a-input-1")
+const a_input2 = document.getElementById("a-input-2")
+const a_input3 = document.getElementById("a-input-3")
+const a_input4 = document.getElementById("a-input-4")
+const a_input5 = document.getElementById("a-input-5")
+const a_input6 = document.getElementById("a-input-6")
+const a_input7 = document.getElementById("a-input-7")
+
 function create_mode(root, mode) {
     var root_scale = []
     for (const [key, value] of Object.entries(ionian)) {
@@ -87,7 +95,7 @@ function create_harm_minor(root) {
 
 }
 
-function init() {
+function list_modes() {
     document.getElementById("p_modes")
 
     var idx = 1
@@ -104,4 +112,58 @@ function init() {
     }
 }
 
-init()
+document.addEventListener("DOMContentLoaded", () => {
+    const inputs = document.querySelectorAll(".a-input");
+
+    inputs.forEach((input, index) => {
+        input.addEventListener("input", (event) => {
+            let value = event.target.value;
+            let nextInput = inputs[index + 1];
+
+            if (value.length === 1) {
+                if (/^[A-G]$/.test(value)) {
+                    // Store the capital letter
+                    event.target.dataset.letter = value;
+                } else {
+                    // Remove invalid characters
+                    event.target.value = "";
+                }
+            } else if (value.length === 2) {
+                const firstChar = value[0];
+                let secondChar = value[1];
+
+                if (secondChar === "#") secondChar = "♯"; // Convert # to ♯
+                if (secondChar === "b") secondChar = "♭"; // Convert b to ♭
+
+                if (secondChar === "♯" || secondChar === "♭") {
+                    // Valid accidental, replace it and move to next input
+                    event.target.value = firstChar + secondChar;
+                    if (nextInput) nextInput.focus();
+                } else if (/^[A-G]$/.test(secondChar)) {
+                    // Move second capital letter to next input
+                    event.target.value = firstChar;
+                    if (nextInput) {
+                        nextInput.value = secondChar;
+                        nextInput.focus();
+                    }
+                } else {
+                    // Remove invalid second character
+                    event.target.value = firstChar;
+                }
+            }
+        });
+
+        input.addEventListener("keydown", (event) => {
+            if (event.key === "Backspace" && input.value === "" && index > 0) {
+                event.preventDefault(); // Prevent default backspace behavior
+                const prevInput = inputs[index - 1];
+                prevInput.focus();
+                setTimeout(() => prevInput.setSelectionRange(prevInput.value.length, prevInput.value.length), 0); // Move cursor to end
+            }
+        });
+    });
+});
+
+function set_question() {
+    
+}

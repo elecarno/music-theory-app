@@ -2,3 +2,7 @@ body {
     background-color: #222;
     color: #eee;
 }
+
+.a-input {
+    width: 1.5em;
+}
