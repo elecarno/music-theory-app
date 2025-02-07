@@ -53,6 +53,7 @@ var modes = {
     7: "Locrian"
 }
 
+const p_question = document.getElementById("question")
 const a_input1 = document.getElementById("a-input-1")
 const a_input2 = document.getElementById("a-input-2")
 const a_input3 = document.getElementById("a-input-3")
@@ -112,6 +113,8 @@ function list_modes() {
     }
 }
 
+var answer
+
 document.addEventListener("DOMContentLoaded", () => {
     const inputs = document.querySelectorAll(".a-input");
 
@@ -122,32 +125,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (value.length === 1) {
                 if (/^[A-G]$/.test(value)) {
-                    // Store the capital letter
                     event.target.dataset.letter = value;
                 } else {
-                    // Remove invalid characters
                     event.target.value = "";
                 }
             } else if (value.length === 2) {
                 const firstChar = value[0];
                 let secondChar = value[1];
 
-                if (secondChar === "#") secondChar = "♯"; // Convert # to ♯
-                if (secondChar === "b") secondChar = "♭"; // Convert b to ♭
+                if (secondChar === "#") secondChar = "♯";
+                if (secondChar === "b") secondChar = "♭";
 
                 if (secondChar === "♯" || secondChar === "♭") {
-                    // Valid accidental, replace it and move to next input
                     event.target.value = firstChar + secondChar;
                     if (nextInput) nextInput.focus();
                 } else if (/^[A-G]$/.test(secondChar)) {
-                    // Move second capital letter to next input
                     event.target.value = firstChar;
                     if (nextInput) {
                         nextInput.value = secondChar;
                         nextInput.focus();
                     }
                 } else {
-                    // Remove invalid second character
                     event.target.value = firstChar;
                 }
             }
@@ -155,15 +153,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
         input.addEventListener("keydown", (event) => {
             if (event.key === "Backspace" && input.value === "" && index > 0) {
-                event.preventDefault(); // Prevent default backspace behavior
+                event.preventDefault();
                 const prevInput = inputs[index - 1];
                 prevInput.focus();
-                setTimeout(() => prevInput.setSelectionRange(prevInput.value.length, prevInput.value.length), 0); // Move cursor to end
+                setTimeout(() => prevInput.setSelectionRange(prevInput.value.length, prevInput.value.length), 0);
+            }
+
+            if (event.key === "Enter") {
+                checkInputs();
             }
         });
     });
+
+    function checkInputs() {
+        let userInputs = Array.from(inputs).map(input => input.value.trim());
+        if (userInputs.includes("")) {
+            alert("All inputs must be filled!");
+            return;
+        }
+
+        let isCorrect = userInputs.every((val, i) => val === answer[i]);
+        alert(isCorrect ? "Correct!" : "Incorrect. Answer was " + answer);
+    }
 });
 
 function set_question() {
-    
+    var root = notes[Math.floor(Math.random()*notes.length)];
+    var mode = Math.floor(Math.random() * 7) + 1;
+    answer = create_mode(root, mode)
+
+    p_question.textContent = answer[0] + " " + modes[mode]
 }
+
+set_question()
