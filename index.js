@@ -80,9 +80,18 @@ const root_switch9 = document.getElementById("root-switch-9")
 const root_switch10 = document.getElementById("root-switch-10")
 const root_switch11 = document.getElementById("root-switch-11")
 const root_switch12 = document.getElementById("root-switch-12")
-const start_button = document.getElementById("start-button")
 
-start_button.onclick = set_question
+document.getElementById("endless-button").onclick = endless
+document.getElementById("all-button").onclick = all
+
+function endless() {
+    test_type = "endless"
+    create_question()
+}
+
+function all() {
+    test_type = "all"
+}
 
 function create_mode(root, mode) {
     var root_scale = []
@@ -136,6 +145,10 @@ function list_modes() {
 }
 
 var answer
+var used_questions = []
+var n_questions = 0
+var completed_questions = 0
+var test_type = "endless"
 
 document.addEventListener("DOMContentLoaded", () => {
     const inputs = document.querySelectorAll(".a-input");
@@ -201,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isCorrect) {
             // alert("Correct! Inputs will be cleared.");
             clearInputs();
-            set_question();
+            create_question();
         } else {
             alert("Incorrect. " + answer);
         }
@@ -213,8 +226,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+function create_question() {
+    var q = {}
 
-function set_question() {
     var allowed_modes = []
     for (let i = 1; i <= 7; i++) {
         const modeSwitch = document.getElementById(`mode-switch-${i}`);
@@ -240,8 +254,14 @@ function set_question() {
         var root = allowed_roots[Math.floor(Math.random()*allowed_roots.length)];
         // var mode = Math.floor(Math.random() * 7) + 1;
         var mode = allowed_modes[Math.floor(Math.random()*allowed_modes.length)];
-        answer = create_mode(root, mode)
-    
-        p_question.textContent = answer[0] + " " + modes[mode]
+        q = {
+            "root": root,
+            "mode": mode
+        }
+
+        if (test_type == "endless") {
+            answer = create_mode(root, mode)
+            p_question.textContent = answer[0] + " " + modes[mode]
+        }
     }
 }

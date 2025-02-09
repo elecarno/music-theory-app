@@ -18,7 +18,14 @@
       <input type="text" maxlength="2" id="a-input-6" class="a-input"></input>
       <input type="text" maxlength="2" id="a-input-7" class="a-input"></input>
     </div>
-    <div>
+    <span id="questions-counter">0 / 10</span>
+    <!-- Question Set -->
+    <div id="questions-ui">
+      <button id="endless-button">Endless</button>
+      <button id="all-button">All</button>
+    </div>
+    <!-- Modes -->
+    <div id="modes-ui">
       <div>
         <label class="switch">
           <input type="checkbox" id="mode-switch-1" checked>
@@ -68,9 +75,9 @@
         </label>
         <span>Locrian</span>
       </div>
-      <button id="start-button">Start</button>
     </div>
-    <div>
+    <!-- Roots -->
+    <div id="roots-ui">
       <div>
         <label class="switch">
           <input type="checkbox" id="root-switch-1" checked>
