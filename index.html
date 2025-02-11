@@ -8,159 +8,165 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div>
-      <p id="question">Test not started</p>
-      <input type="text" maxlength="2" id="a-input-1" class="a-input"></input>
-      <input type="text" maxlength="2" id="a-input-2" class="a-input"></input>
-      <input type="text" maxlength="2" id="a-input-3" class="a-input"></input>
-      <input type="text" maxlength="2" id="a-input-4" class="a-input"></input>
-      <input type="text" maxlength="2" id="a-input-5" class="a-input"></input>
-      <input type="text" maxlength="2" id="a-input-6" class="a-input"></input>
-      <input type="text" maxlength="2" id="a-input-7" class="a-input"></input>
-    </div>
-    <span id="questions-counter">0 / 10</span>
-    <!-- Question Set -->
-    <div id="questions-ui">
-      <button id="endless-button">Endless</button>
-      <button id="all-button">All</button>
-    </div>
-    <!-- Modes -->
-    <div id="modes-ui">
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="mode-switch-1" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>Ionian</span>
+    <div id="main">
+      <div id="answer-ui">
+        <span id="questions-counter" style="font-size: 18px; margin-bottom: 0;">0 / 10</span>
+        <p id="question" style="font-size: 32px; margin-top: 8px;">Test not started</p>
+        <div id="answer-inputs-ui">
+          <input type="text" maxlength="2" id="a-input-1" class="a-input"></input>
+          <input type="text" maxlength="2" id="a-input-2" class="a-input"></input>
+          <input type="text" maxlength="2" id="a-input-3" class="a-input"></input>
+          <input type="text" maxlength="2" id="a-input-4" class="a-input"></input>
+          <input type="text" maxlength="2" id="a-input-5" class="a-input"></input>
+          <input type="text" maxlength="2" id="a-input-6" class="a-input"></input>
+          <input type="text" maxlength="2" id="a-input-7" class="a-input"></input>
+        </div>
       </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="mode-switch-2">
-          <span class="slider round"></span>
-        </label>
-        <span>Dorian</span>
+      <!-- Question Set -->
+      <div id="questions-ui">
+        <button id="endless-button" class="type-button">Endless</button>
+        <button id="all-button" class="type-button">All</button>
       </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="mode-switch-3">
-          <span class="slider round"></span>
-        </label>
-        <span>Phrygian</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="mode-switch-4">
-          <span class="slider round"></span>
-        </label>
-        <span>Lydian</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="mode-switch-5">
-          <span class="slider round"></span>
-        </label>
-        <span>Mixolydian</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="mode-switch-6" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>Aeolian</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="mode-switch-7">
-          <span class="slider round"></span>
-        </label>
-        <span>Locrian</span>
-      </div>
-    </div>
-    <!-- Roots -->
-    <div id="roots-ui">
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-1" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>C</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-2" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>C♯/D♭</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-3" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>D</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-4" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>D♯/E♭</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-5" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>E</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-6" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>F</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-7" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>F♯/G♭</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-8" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>G</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-9" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>G♯/A♭</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-10" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>A</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-11" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>A♯/B♭</span>
-      </div>
-      <div>
-        <label class="switch">
-          <input type="checkbox" id="root-switch-12" checked>
-          <span class="slider round"></span>
-        </label>
-        <span>B</span>
+      <div id="settings-ui">
+        <!-- Modes -->
+        <div id="modes-ui">
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="mode-switch-1" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>Ionian</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="mode-switch-2">
+              <span class="slider round"></span>
+            </label>
+            <span>Dorian</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="mode-switch-3">
+              <span class="slider round"></span>
+            </label>
+            <span>Phrygian</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="mode-switch-4">
+              <span class="slider round"></span>
+            </label>
+            <span>Lydian</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="mode-switch-5">
+              <span class="slider round"></span>
+            </label>
+            <span>Mixolydian</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="mode-switch-6" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>Aeolian</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="mode-switch-7">
+              <span class="slider round"></span>
+            </label>
+            <span>Locrian</span>
+          </div>
+        </div>
+        <!-- Roots -->
+        <div id="roots-ui">
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-1" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>C</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-2" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>C♯/D♭</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-3" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>D</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-4" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>D♯/E♭</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-5" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>E</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-6" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>F</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-7" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>F♯/G♭</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-8" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>G</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-9" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>G♯/A♭</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-10" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>A</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-11" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>A♯/B♭</span>
+          </div>
+          <div>
+            <label class="switch">
+              <input type="checkbox" id="root-switch-12" checked>
+              <span class="slider round"></span>
+            </label>
+            <span>B</span>
+          </div>
+        </div>
       </div>
     </div>
     <script src="index.js"></script>
