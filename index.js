@@ -80,6 +80,7 @@ const root_switch9 = document.getElementById("root-switch-9")
 const root_switch10 = document.getElementById("root-switch-10")
 const root_switch11 = document.getElementById("root-switch-11")
 const root_switch12 = document.getElementById("root-switch-12")
+const questions_counter = document.getElementById("questions-counter")
 
 document.getElementById("endless-button").onclick = endless
 document.getElementById("all-button").onclick = all
@@ -87,10 +88,12 @@ document.getElementById("all-button").onclick = all
 function endless() {
     test_type = "endless"
     create_question()
+    questions_counter.style.display = "none"
 }
 
 function all() {
     test_type = "all"
+    questions_counter.style.display = "block"
 }
 
 function create_mode(root, mode) {
